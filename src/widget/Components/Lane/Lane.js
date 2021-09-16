@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { hot } from 'react-hot-loader/root';
 import Station from '../Station/Station';
 import './style.css';
-const Lane = ({title , stations , plates}) => {
+const OrderLane = ({title , stations}) => {
     return(
         <div className="lane-maincontainer">
             <div className="lane-title">
@@ -16,13 +16,9 @@ const Lane = ({title , stations , plates}) => {
                         <Station isOrder={true} food="Pizza" ingredients={["Tomato" , "Buns" , "Peperonni"]}/>
                     );
                 })}
-                {plates && plates.map(p => {
-                    // <Plate ingredient />
-                })
-                }
             </div>
         </div>
     );
 }
 
-export default hot(Lane);
+export default hot(OrderLane);

@@ -2,8 +2,11 @@ import React, { useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Level } from '../../data/levels';
 import { IngredientStates } from '../../enums/ingredientStates';
-
-
+import OrderLane from '../Components/OrderLane/OrderLane';
+import PantryLane from '../Components/PantryLane/PantryLane';
+import PrepLane from '../Components/PrepLane/PrepLane';
+import Score from '../Components/Score/Score'
+import {obj} from './../../data/kitchenExample';
 
 function Widget() {
   useEffect(() => {
@@ -12,16 +15,17 @@ function Widget() {
     console.log(level)
     console.log(IngredientStates)
   }, []);  
+  
+
+  console.log(obj.orders);
 
   return (
     <div>
       <Score />
-      <Lane title="Orders" stations={["Station 1" , "Station 2"]}/>
-      <Lane title="Ingredients" plates={["Tomato" , ""]}/>
-      <Lane title="Cooking Station" plates={["Station 1" , "Station 2"]}/>
-      <Lane title="Prep Station" plates={["Station 1" , "Station 2"]}/>
-      <Lane title="Serving Station" plates={["Station 1" , "Station 2"]}/>
-      {/* <Orders title="Orders" orders={orders} /> */}
+      <OrderLane title="Orders" orders={obj.orders}/>
+      <PantryLane title="Pantry" pantry={obj.kitchenConfig.pantry}/>
+      <PrepLane title="Prep" plates={["Plate 1","Plate 2"]}/>
+
     </div>
     )
 }

@@ -1,0 +1,9 @@
+.prepLaneMainContainer{
+    width: 100%;
+    height: 70px;
+}
+.prepLaneContainer{
+    width: 100%;
+    height: 80%;
+    background-color: #e5e5e5;
+}
