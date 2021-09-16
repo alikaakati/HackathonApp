@@ -12,7 +12,9 @@ export class Level {
         this.kitchenConfig = kitchenConfig;
         this.nextLevelAt = nextLevelAt;
     }
-	// kitchenConfig: kitchenConfig,
-	// nextLevelAt: Number
+
+    setNextLevel(score) {
+        this.nextLevelAt = score;
+    }
 
 }

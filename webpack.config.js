@@ -187,6 +187,21 @@ WebpackConfig.plugins.push(
         '*.tsx'
       ]
     }
+  ),
+  new CopyWebpackPlugin(
+    [
+      {
+        from: path.join(__dirname, 'src/data'),
+        to: path.join(__dirname, 'dist/data')
+      },
+      {
+        from: path.join(__dirname, 'src/enums'),
+        to: path.join(__dirname, 'dist/enums')
+      }
+    ],
+    {
+      ignore: []
+    }
   )
 );
 
