@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+
+  <script src="../../../scripts/buildfire.js"></script>
+  <script src="./js/ingredientStates.js"></script>
+  <script src="./js/ingredient.js"></script>
+  <script src="./js/ingredients.js"></script>
+</head>
+<body>
+  <div class="score">
+    <h1>Score: </h1> 
+    <h2 id="score"></h2>
+  </div>
+  <div class="title">Orders Station</div>
+  <div class="lane">
+
+  </div>
+  <div class="title">Pantry Station</div>
+  <div class="lane">
+    <div class="plate"></div>
+    <div class="plate"></div>
+    
+  </div>
+  <div class="title">Prep Station</div>
+  <div class="lane">
+    <div class="plate"></div>
+    <div class="plate"></div>
+    <div class="plate"></div>
+  </div>
+  <div class="title">Cooking Station</div>
+  <div class="lane">
+    <div class="plate"></div>
+    <div class="plate"></div>
+  </div>
+  <div class="title">Serving Station</div>
+  <div class="lane">
+    <div class="trash"></div>
+    <div class="plate"></div>
+    <div class="plate"></div>
+  </div>
+
+
+
+  <div id="counter"></div>
+  <div>start</div>
+  <div style="width:100px;height:100px;background-color: red;" id="prepstation" onclick="prepStationClick()">
+
+  </div>
+  <script>
+    let counterStart = 5;
+    let timer = setInterval(() => {
+      counterStart--;
+      document.getElementById("counter").innerHTML = counterStart;
+      if(counterStart == 0) clearInterval(timer);
+    }, 1000);
+
+    document.getElementById("prepstation").innerHTML = 0;
+    let clicksCount = 0;
+    prepStationClick = () =>{
+      clicksCount++;
+      document.getElementById("prepstationID").innerHTML = clicksCount;
+    }
+  </script>
+</body>
+</html>
