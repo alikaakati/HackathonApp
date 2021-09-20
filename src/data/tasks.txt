@@ -1,0 +1,3 @@
+prep station // fully done
+cooking station // fully done
+serving station + trash can // in progress

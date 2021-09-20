@@ -1,4 +1,4 @@
-export class Ingredient {
+export class Recipe {
 	name = null;
 	ingredients = null;
 	image = null;

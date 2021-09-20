@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { hot } from 'react-hot-loader/root';
 import './style.css'
-
-const Pantry = ({rawImage , name}) => {
-
+import { cookingStation } from '../../../data/cookingStationV3.js';
+const Pantry = ({rawImage , name, event, clicks}) => {
+    const [pantryClicks, setPantryClicks] = useState(clicks)
     const onDragStart = (ev , name) =>{
         ev.dataTransfer.setData("name" , name)
     }
     return (
-        <div className="sPantry" draggable={true} onDragStart = {(e) => onDragStart(e, name)}>
+        <div onClick={() => setPantryClicks(p => p+1)} className="sPantry">
+            <h1>{pantryClicks}</h1>
             <img src={rawImage} style={{width:"100%",height:"100%"}} />
         </div>
     )
