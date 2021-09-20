@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="style.css"/>
 
   <script src="../../../scripts/buildfire.js"></script>
+  <!-- <meta name="buildfire" content="disableBootstrap"> -->
+  <meta name="buildfire" content="disableBootstrap,disableAppStyles">
   <script src="./js/recipe.js"></script>
   <script src="./js/recipes.js"></script>
   <script src="./js/ingredientStates.js"></script>
@@ -17,49 +19,128 @@
   <script src="./js/cookingStation.js"></script>
   <script src="./js/prepStation.js"></script>
   <script src="./js/servingStation.js"></script>
+  <script src="http://SortableJS.github.io/Sortable/Sortable.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
 <body>
-  <div class="score">
-    <h1>Score: </h1> 
-    <h2 id="score"></h2>
-  </div>
-  <div class="title">Orders Station</div>
-  <div class="lane">
 
-  </div>
-  <div class="title">Pantry Station</div>
-  <div class="lane">
-    <div class="plate"></div>
-    <div class="plate"></div>
+  <div class="container">
+
+
+    <h1>Orders</h1>
+    <div class="row">
+        <ul class="lane list-group list-group-horizontal">
+          <li class="plate list-group-item">Order 1</li>
+          <li class="plate list-group-item">Order 2</li>
+        </ul>
+    </div>
     
-  </div>
-  <div class="title">Prep Station</div>
-  <div class="lane">
-    <div class="plate"></div>
-    <div class="plate"></div>
-    <div class="plate"></div>
-  </div>
-  <div class="title">Cooking Station</div>
-  <div class="lane">
-    <div class="plate"></div>
-    <div class="plate"></div>
-  </div>
-  <div class="title">Serving Station</div>
-  <div class="lane">
-    <div class="trash"></div>
-    <div class="plate"></div>
-    <div class="plate"></div>
-  </div>
+
+    <h1>Pantry</h1>
+    <div class="row">
+        <ul class="lane list-group list-group-horizontal" id="pantryLane">
+          <li class="plate list-group-item">4</li>
+          <li class="plate list-group-item">5</li>
+        </ul>
+    </div>
+    <hr />
+    <h1>Prep</h1>
+
+    <div class="row">
+      <ul id="prepLane" class="list-group list-group-horizontal">
+        <li class="plate list-group-item">1</li>
+        <li class="plate list-group-item">2</li>
+        <li class="plate list-group-item">3</li>
+      </ul>
+  
+    </div>
+    <h1>Cooking</h1>
+    <div class="row">
+      <ul id="cookingLane" class="list-group list-group-horizontal">
+        <li class="plate list-group-item">1</li>
+        <li class="plate list-group-item">2</li>
+        <li class="plate list-group-item">3</li>
+      </ul>
+  
+    </div>
+    <h1>Order</h1>
+    <div class="row">
+      <ul id="servingLane" class="list-group list-group-horizontal">
+        <li class="plate list-group-item">1</li>
+        <li class="plate list-group-item">2</li>
+        <li class="plate list-group-item">3</li>
+      </ul>
+  
+    </div>
 
 
 
-  <div id="counter"></div>
-  <div>start</div>
-  <div style="width:100px;height:100px;background-color: red;" id="prepstation" onclick="prepStationClick()">
-
   </div>
+
+
   <script>
-    console.log(prepStation);
+    // Simple list
+    new Sortable(pantryLane, {
+        group: 'shared', // set both lists to same group
+        animation: 150,
+        onAdd: function (/**Event*/evt) {
+            // same properties as onEnd
+            debugger;
+        },
+        // Element is removed from the list into another list
+        onRemove: function (/**Event*/evt) {
+            debugger;
+        },
+    });
+
+    new Sortable(prepLane, {
+        group: 'shared',
+        animation: 150,
+        onAdd: function (/**Event*/evt) {
+            // same properties as onEnd
+            debugger;
+        },
+        // Element is removed from the list into another list
+        onRemove: function (/**Event*/evt) {
+            debugger;
+        }
+    });
+
+    new Sortable(cookingLane, {
+        group: 'shared', // set both lists to same group
+        animation: 150,
+        onAdd: function (/**Event*/evt) {
+            // same properties as onEnd
+            debugger;
+        },
+        // Element is removed from the list into another list
+        onRemove: function (/**Event*/evt) {
+            debugger;
+        },
+    });
+    new Sortable(servingLane, {
+        group: 'shared', // set both lists to same group
+        animation: 150,
+        onAdd: function (/**Event*/evt) {
+            // same properties as onEnd
+            debugger;
+        },
+        // Element is removed from the list into another list
+        onRemove: function (/**Event*/evt) {
+            debugger;
+        },
+    });
+
+
+</script>
+
+
+  <script>
+    let newPrepStation = new prepStation();
+    newPrepStation.add(kitchenExample.kitchenConfig.pantry[0]);
+    console.log(newPrepStation);
+
+
 
   </script>
 </body>
