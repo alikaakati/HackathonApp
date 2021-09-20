@@ -92,7 +92,6 @@
             debugger;
         },
     });
-
     new Sortable(prepLane, {
         group: 'shared',
         animation: 150,
@@ -105,7 +104,6 @@
             debugger;
         }
     });
-
     new Sortable(cookingLane, {
         group: 'shared', // set both lists to same group
         animation: 150,
@@ -140,7 +138,9 @@
     newPrepStation.add(kitchenExample.kitchenConfig.pantry[0]);
     console.log(newPrepStation);
 
-
+    let x = document.getElementById("prepLane");
+    x.setAttribute("data-item",JSON.stringify(newPrepStation.ingredient));
+    console.log(x.getAttribute("data-item"));
 
   </script>
 </body>
