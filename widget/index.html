@@ -59,19 +59,8 @@
 
   </div>
   <script>
-    let counterStart = 5;
-    let timer = setInterval(() => {
-      counterStart--;
-      document.getElementById("counter").innerHTML = counterStart;
-      if(counterStart == 0) clearInterval(timer);
-    }, 1000);
+    console.log(prepStation);
 
-    document.getElementById("prepstation").innerHTML = 0;
-    let clicksCount = 0;
-    prepStationClick = () =>{
-      clicksCount++;
-      document.getElementById("prepstationID").innerHTML = clicksCount;
-    }
   </script>
 </body>
 </html>

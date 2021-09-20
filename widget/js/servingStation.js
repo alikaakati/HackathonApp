@@ -1,4 +1,4 @@
-export class servingStation{
+class servingStation{
 
     
     constructor(ingredients) {

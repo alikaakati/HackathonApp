@@ -1,4 +1,4 @@
-export class Ingredient{
+class Ingredient{
 
     constructor(name, rawImage, prepClicks,prepImage, cookTime, cookImage){
         this.name = name;
