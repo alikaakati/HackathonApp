@@ -22,6 +22,16 @@ gameApp.service('$appConfig', function () {
     }
 });
 
+gameApp.directive('includeReplace', function () {
+    return {
+        require: 'ngInclude',
+        restrict: 'A', /* optional */
+        link: function (scope, el, attrs) {
+            el.replaceWith(el.children());
+        }
+    };
+});
+
 gameApp.run(function () {
     let dough = new Ingredient("Dough", "https://freepikpsd.com/media/2019/11/dough-png-1-Transparent-Images.png", 5, 'https://atlas-content-cdn.pixelsquid.com/stock-images/raw-dough-in-bowl-4G3JxG3-600.jpg', 5, 'https://cdn.imgbin.com/25/12/13/imgbin-bakery-bread-food-tea-dough-pan-frances-redondo-Eud5MSxyuaeC5a41n5ZSicuer.jpg');
     let cheese = new Ingredient("Cheese", 'https://png.pngtree.com/png-vector/20190219/ourlarge/pngtree-vector-cheese-icon-png-image_563215.jpg', 2, 'https://us.123rf.com/450wm/tanyasid/tanyasid2005/tanyasid200500038/146697574-grated-cheese-isolated-on-white-background-slices-cheese-.jpg?ver=6', 5, 'https://png.pngtree.com/png-clipart/20190516/original/pngtree-cheese-melting-vector-png-image_3556875.jpg');

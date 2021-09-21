@@ -38,4 +38,12 @@ gameApp.controller("KitchenController", function ($scope, $appConfig) {
     $scope.prepClicks = function (item, index) {
         $scope.appConfig.prepStations[index].prep();
     }
+
+    $scope.getStyle = function(list) {
+        //
+        // return {
+        //     'width': list.cookingTime + 'px'
+        // }
+    };
+
 });

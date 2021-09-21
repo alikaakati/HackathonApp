@@ -1,0 +1,350 @@
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  font-size: 18px;
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: .125em;
+}
+
+body{
+  background: rgb(32,36,71);
+  background: linear-gradient(0deg, rgba(32,36,71,1) 0%, rgba(53,58,106,1) 100%);
+  display: flex;
+  flex-direction: column;
+  color: #E6E8F7;
+}
+/* Header-------------------- */
+header{
+  /* background-color: #282828; */
+  padding: 1rem 1rem 0 1rem;
+}
+header h1{
+  font-size: .75rem;
+  font-weight: bold;
+  color: #5e6497;
+}
+header h1 span{
+  color: #fff;
+}
+header::before{
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 10rem;
+  width: 100%;
+  background-color: #252746;
+  z-index: -1;
+  filter: blur(1.5rem);
+}
+img{
+  width: 100%;
+}
+/* General Elements ---------------- */
+.lane{
+  min-height: 4rem;
+  width: 100%;
+  overflow-x: auto;
+  flex-shrink: 0;
+  padding: 1rem;
+  /* border: 1px 0 1px 0 solid #2e2e2e; */
+  display: flex;
+}
+.lane::-webkit-scrollbar {
+  display: none;
+}
+.lane {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.card{
+  padding: .25rem;
+  border-radius: 1.25rem;
+  box-shadow: .5rem 0.125rem 1rem #171b36, inset 0 0.125rem 0.25rem #474fb0;
+  margin-right: .5rem;
+  flex-shrink: 0;
+}
+/* Orders ------------------- */
+.lane.orders{
+  padding-bottom: .75rem;
+}
+.order{
+  width: 25vw;
+  background: #3F467E;
+  border-radius: 1rem 1rem .5rem .5rem;
+  background: linear-gradient(0deg, #313868 0%, #3F467E 100%);
+  /* border: 1px solid #272835; */
+  transform: translateX(2000%);
+}
+.order.active{
+  animation: new-order .5s ease-in-out forwards;
+}
+@keyframes new-order{
+  0%{
+    transform: translateX(2000%);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
+.order-title{
+  font-size: .75rem;
+  font-weight: bold;
+  text-align: center;
+  padding: .5rem 0;
+  display: none;
+}
+.order-img{
+  width: 100%;
+  border-radius: .25rem;
+  padding: .5rem;
+  /* background-color: #2e2e2e; */
+}
+.order .ingredients-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1.25rem, 1fr));
+}
+.order .ingredient{
+  /* width: 1rem; */
+  margin: 1px;
+  flex-shrink: 0;
+}
+/* Pantry ------------------- */
+.lane.pantry{
+  overflow-y: auto;
+  margin-bottom: auto;
+  padding-bottom: .5rem;
+}
+.pantry .ingredient{
+  width: 12.5vw;
+  padding: .5rem;
+  border-radius: .5rem;
+}
+.ingredient{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(32,36,71,.5);
+  border-radius: .25rem;
+  padding: .25rem;
+  overflow: hidden;
+  margin-right: .5rem;
+  flex-shrink: 0;
+}
+/* Prep Station ------------------- */
+.lane.prep{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: .25rem;
+  padding: .25rem 1rem;
+  padding-bottom: 0;
+  overflow: visible;
+}
+.prep .card{
+  min-height: 4rem;
+  background-color: #8243EC;
+  padding: .5rem;
+  margin: 0;
+  box-shadow: .5rem 0.5rem 1rem #1c1f38;
+}
+.prep .card:active{
+  transform: scale(1.05);
+}
+.prep .card:first-of-type{
+  border-radius: 1rem .5rem .5rem .5rem;
+}
+.prep .card:last-of-type{
+  border-radius: .5rem 1rem .5rem .5rem;
+}
+.prep .prep-container{
+  margin-bottom: .5rem;
+  margin-right: 0;
+  height: 5rem;
+  border-radius: .5rem;
+}
+.prep .prep-container img,
+.prep .prep-container .ingredient{
+  width: auto;
+  height: 100%;
+  min-height: 5rem;
+  margin: 0;
+  border-top-left-radius: .5rem;
+}
+.prep-progress{
+  height: .375rem;
+  border-radius: .25rem;
+  background-color: #6a33c3;
+}
+.prep-progress .progress-stat{
+  width: 0%;
+  height: 100%;
+  background-color: #3ae164;
+  border-radius: .25rem;
+}
+/* Cooking Station ------------------- */
+.lane.cooking{
+  overflow: visible;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: .25rem;
+  padding: 1rem 1rem 2rem 1rem;
+}
+.cooking .card{
+  padding: .25rem;
+  border-radius: .25rem;
+  border: 1px solid #fe8f8f;
+  margin-right: 0;
+  min-height: 10rem;
+  background-color: #a21a1a7d;
+  box-shadow: 0 .25rem 1rem rgba(254, 17, 0, 0.5), inset 0 .25rem 1rem rgba(254, 17, 0, 0.5);
+  position: relative;
+}
+.cooking .card::before{
+  content: '';
+  border: 1px solid #fe8f8f;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  border-radius: 1rem;
+  opacity: 0;
+}
+.cooking .card.active{
+  animation: cooking-active .2s ease-in-out 10;
+}
+.cooking .card.active::before{
+  animation: halo .3s linear forwards;
+  transform-origin: center;
+  pointer-events: none;
+}
+@keyframes halo {
+  0%{
+    transform: scale(1);
+    opacity: 0;
+  }
+  30%{
+    opacity: 1;
+  }
+  100%{
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+@keyframes cooking-active{
+  0%{
+    box-shadow: .125rem .25rem 1.75rem rgba(254, 17, 0, 0.5), inset 0 .35rem 1rem rgba(254, 17, 0, 0.5);
+  }
+  25%{
+    box-shadow: 0 .35rem 1rem rgba(254, 17, 0, 0.5), inset 0 -.25rem .75rem rgba(254, 17, 0, 0.5);
+  }
+  100%{
+    box-shadow: -.125rem .15rem -.5rem rgba(254, 17, 0, 0.5), inset 0 .125rem 1rem rgba(254, 17, 0, 0.5);
+  }
+}
+.cooking .card:first-of-type{
+  border-radius: .5rem .25rem .25rem .5rem;
+}
+.cooking .card:last-of-type{
+  border-radius: .25rem .5rem .5rem .25rem;
+}
+.cooking-progress{
+  height: .375rem;
+  border-radius: .25rem;
+  background-color: #4f1818;
+  margin-bottom: .5rem;
+}
+.cooking-container{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(1.25rem, 1fr));
+  grid-row-gap: .25rem;
+  grid-column-gap: .25rem;
+}
+.cooking-container .ingredient{
+  margin: 0;
+}
+.cooking-progress .progress-stat{
+  width: 0%;
+  height: 100%;
+  background-color: #ff4848;
+  border-radius: .25rem;
+}
+.card.active .progress-stat{ 
+  animation: cooking-stat 5s;
+}
+@keyframes cooking-stat {
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 100%;
+  }
+}
+/* Serving Station ------------------- */
+.lane.serving{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: .5rem;
+  margin-top: auto;
+  background: #414787;
+  box-shadow: 0.5rem 0.125rem 1rem #171b36, inset 0 0.125rem 0.25rem #545ba1;
+}
+.serving .card{
+  margin-right: 0;
+  background-color: #9ba3ff;
+  box-shadow: 0.25rem 0.5rem 0.75em #292c4f, inset 0.25rem 0.5rem 1rem #5963b2;
+  height: 0;
+  padding-bottom: 100%;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+}
+.serving .card:not(.trash){
+  opacity: 0;
+  animation: new-plate .2s cubic-bezier(0.42, 0, 0.65, 1.49) .1s forwards;
+}
+@keyframes new-plate{
+  0%{
+    transform: scale(.1);
+    opacity: 0;
+  }
+  100%{
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.serving .card.done:not(.trash){
+  opacity: 1;
+  animation: serving-done .2s cubic-bezier(0.42, 0, 0.65, 1.49) .1s backwards;
+}
+@keyframes serving-done{
+  0%{
+    transform: scale(1);
+    opacity: 1;
+  }
+  100%{
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+.serving-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1rem, 1fr));
+  grid-row-gap: .25rem;
+  grid-column-gap: .25rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.serving-container .ingredient{
+  margin: 0;
+}
+.serving .trash{
+  box-shadow: none;
+  background: transparent;
+}

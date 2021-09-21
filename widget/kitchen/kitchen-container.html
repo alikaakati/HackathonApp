@@ -1,48 +1,102 @@
-<h1>Score: {{score}}</h1>
+<header>
+    <h1>Score: <span class="score-count">1260</span></h1>
+</header>
+<section ng-repeat="(listName, list) in [appConfig.pantry]" dnd-list="list" class="lane pantry">
+    <div class="ingredient" ng-repeat="item in list"
+         dnd-draggable="item"
+         dnd-moved="list.splice($index, 1)"
+         dnd-effect-allowed="copy"
+         dnd-selected="models.selected = item"
+         ng-class="{'selected': models.selected === item}">
+        <img ng-src="{{item.rawImage}}" alt="">
+    </div>
+</section>
 
-<div class="simpleDemo">
-    <div class="row">
-        <div class="card">
-            <div class="card-header">
-                Pantry
+<section class="lane prep">
+    <div ng-repeat="(index, list) in appConfig.prepStations" class="card" dnd-list="list.ingredients"
+         dnd-drop="prepStationDropCallback(index, item, external, type,list)"
+         dnd-disable-if="list.ingredients.length === 1">
+        <div class="prep-container">
+            <div class="ingredient"
+                 ng-repeat="item in list.ingredients"
+                 dnd-draggable="item"
+                 dnd-moved="list.ingredients.splice($index, 1)"
+                 dnd-effect-allowed="move"
+                 dnd-selected="models.selected = item"
+                 ng-click="prepClicks(item,index)"
+                 ng-class="{'selected': models.selected === item}">
+                <img ng-src="{{item.stateImage}}" width="100%" alt="">
             </div>
-            <div ng-repeat="(listName, list) in [appConfig.pantry]" class="card-body">
-                <div ng-include="'kitchen/pantry.html'"></div>
+        </div>
+        <div class="prep-progress">
+            <div class="progress-stat"></div>
+        </div>
+    </div>
+</section>
+
+<section class="lane cooking">
+    <div ng-repeat="(index, list) in appConfig.cookingStations" dnd-list="list.ingredients" dnd-drop="cookingStationDropCallback(index, item, external, type,list)" class="card">
+        <div class="cooking-progress"><div class="progress-stat" ng-style="getStyle(list)"></div></div>
+        <div class="cooking-container">
+            <div ng-if="!list.recipeMatched" class="ingredient"
+                 ng-repeat="item in list.ingredients"
+                 dnd-draggable="item"
+                 dnd-moved="list.ingredients.splice($index, 1)"
+                 dnd-effect-allowed="move"
+                 dnd-selected="models.selected = item "
+                 ng-click="prepClicks(item,index)"
+                 ng-class="{'selected': models.selected === item}">
+                <img ng-if="!list.recipeMatched" ng-src="{{item.stateImage}}" />
+                <img ng-if="list.recipeMatched && !list.isRecipeBurnt" ng-src="{{list.recipe[0].image}}" width="50"/>
+                <img ng-if="list.recipeMatched && list.isRecipeBurnt" ng-src="{{list.recipe[0].burntImage}}" width="50"/>
+            </div>
+
+            <div ng-if="list.recipeMatched" class="ingredient"
+                 ng-repeat="item in list.recipe"
+                 dnd-draggable="item"
+                 dnd-moved="list.recipe.splice($index, 1)"
+                 dnd-effect-allowed="move"
+                 dnd-selected="models.selected = list.recipe">
+                <img ng-if="list.recipeMatched && !list.isRecipeBurnt" ng-src="{{list.recipe[0].image}}" width="50"/>
+                <img ng-if="list.recipeMatched && list.isRecipeBurnt" ng-src="{{list.recipe[0].burntImage}}" width="50"/>
             </div>
         </div>
     </div>
+</section>
 
-    <div class="row mt-2">
-        <div ng-repeat="(index, list) in appConfig.prepStations" class="col">
-            <div class="card">
-                <div class="card-header">
-                    Preparation Station
-                </div>
-                <div class="card-body">
-                    <div ng-include="'kitchen/prepStations.html'"></div>
-                </div>
+
+<section class="lane serving">
+    <div dnd-list="[]" class="card trash">
+        <img src="https://cdn-icons-png.flaticon.com/512/1040/1040253.png" alt="">
+    </div>
+    <div class="card">
+        <div class="order-img">
+            <img src="https://cdn-icons-png.flaticon.com/512/4039/4039232.png" alt="">
+        </div>
+        <div class="serving-container">
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="serving-container">
+            <div class="ingredient">
+                <img src="https://cdn-icons-png.flaticon.com/512/1041/1041355.png" alt="">
+            </div>
+            <div class="ingredient">
+                <img src="https://cdn-icons-png.flaticon.com/512/1041/1041384.png" alt="">
+            </div>
+            <div class="ingredient">
+                <img src="https://cdn-icons-png.flaticon.com/512/1041/1041385.png">
+            </div>
+            <div class="ingredient">
+                <img src="https://cdn-icons-png.flaticon.com/512/1041/1041385.png">
+            </div>
+            <div class="ingredient">
+                <img src="https://cdn-icons-png.flaticon.com/512/1041/1041337.png">
             </div>
         </div>
     </div>
-
-    <div class="row mt-2">
-        <div ng-repeat="(index, list) in appConfig.cookingStations" class="col">
-            <div class="card">
-                <div class="card-header">
-                    Cooking Station
-                </div>
-                <div class="card-body">
-                    <div ng-include="'kitchen/cookingStation.html'"></div>
-                </div>
-            </div>
-        </div>
+    <div class="card">
+        <div class="serving-container"></div>
     </div>
-
-    <div class="row mt-2 text-center">
-        <div class="col">
-            <ul dnd-list="[]">
-                <li><img width="100" src="assets/trash.png"></li>
-            </ul>
-        </div>
-    </div>
-</div>
+</section>

@@ -1,5 +1,4 @@
-<ul ng-if="!list.recipeMatched"
-    dnd-list="list.ingredients" dnd-drop="cookingStationDropCallback(index, item, external, type,list)">
+<ul dnd-list="list.ingredients" dnd-drop="cookingStationDropCallback(index, item, external, type,list)">
     <!-- The dnd-draggable directive makes an element draggable and will
          transfer the object that was assigned to it. If an element was
          dragged away, you have to remove it from the original list

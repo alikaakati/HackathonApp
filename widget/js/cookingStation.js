@@ -115,7 +115,6 @@ class cookingStation {
                     })
 
                     if (cIngredientJSONStr === rIngredientJSONStr) {
-                        debugger;
                         numberOfMatchedItems++;
                         break;
                     }
@@ -124,7 +123,6 @@ class cookingStation {
             }
 
             if (numberOfMatchedItems === recipe.ingredients.length) {
-                debugger;
                 console.log("Matched recipe");
                 console.log(recipe);
 
