@@ -1,13 +1,13 @@
 class KitchenConfig {
     pantry = [];
-	prepStation = [];
-	cookingStation = [];
-	servingStation = [];
+	prepStations = [];
+	cookingStations = [];
+	servingStations = [];
 
     constructor(pantry, prepStation, cookingStation, servingStation) {
         this.pantry = pantry;
-        this.prepStation = prepStation;
-        this.cookingStation = cookingStation;
-        this.servingStation = servingStation;
+        this.prepStations = prepStation;
+        this.cookingStations = cookingStation;
+        this.servingStations = servingStation;
     }
 }

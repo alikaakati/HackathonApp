@@ -1,0 +1,48 @@
+<h1>Score: {{score}}</h1>
+
+<div class="simpleDemo">
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                Pantry
+            </div>
+            <div ng-repeat="(listName, list) in [appConfig.pantry]" class="card-body">
+                <div ng-include="'kitchen/pantry.html'"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div ng-repeat="(index, list) in appConfig.prepStations" class="col">
+            <div class="card">
+                <div class="card-header">
+                    Preparation Station
+                </div>
+                <div class="card-body">
+                    <div ng-include="'kitchen/prepStations.html'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div ng-repeat="(index, list) in appConfig.cookingStations" class="col">
+            <div class="card">
+                <div class="card-header">
+                    Cooking Station
+                </div>
+                <div class="card-body">
+                    <div ng-include="'kitchen/cookingStation.html'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2 text-center">
+        <div class="col">
+            <ul dnd-list="[]">
+                <li><img width="100" src="assets/trash.png"></li>
+            </ul>
+        </div>
+    </div>
+</div>

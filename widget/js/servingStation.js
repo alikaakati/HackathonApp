@@ -1,15 +1,12 @@
 class servingStation{
 
-    
-    constructor(ingredients) {
+
+    constructor(name, ingredients) {
+        this.name = name;
         this.ingredients = ingredients;
         this.recipe = null;
         this.recipeMatched = false
     }
-
-
-
-    
 
     add = (ingredient) =>{
         console.log("Adding ingredients right now from cooking station");

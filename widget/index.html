@@ -1,147 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="buildfire" content="disableBootstrap,disableAppStyles">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"/>
 
-  <script src="../../../scripts/buildfire.js"></script>
-  <!-- <meta name="buildfire" content="disableBootstrap"> -->
-  <meta name="buildfire" content="disableBootstrap,disableAppStyles">
-  <script src="./js/recipe.js"></script>
-  <script src="./js/recipes.js"></script>
-  <script src="./js/ingredientStates.js"></script>
-  <script src="./js/ingredient.js"></script>
-  <script src="./js/ingredients.js"></script>
-  <script src="./js/levels.js"></script>
-  <script src="./js/order.js"></script>
-  <script src="./js/kitchenConfig.js"></script>
-  <script src="./js/kitchenExample.js"></script>
-  <script src="./js/cookingStation.js"></script>
-  <script src="./js/prepStation.js"></script>
-  <script src="./js/servingStation.js"></script>
-  <script src="http://SortableJS.github.io/Sortable/Sortable.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!--
+        NOTE:
+        1. You can reference the file in SDK via relative path
+        2. The Control and Widget Should NOT share resources. Only the Widget folder will make it to the device
+        3. You may include any JS framework you want with your Widget and Control folders. However, keep in mind
+            to keep you plugin as light weight as possible for performance and transport reasons
+    -->
+
+    <!-- You can load helper.css to use our helper classes.
+
+    -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="lib/angular-drag-and-drop-lists.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+
+    <script src="app/index.js"></script>
+    <script src="kitchen/kitchen.js"></script>
+
+    <script src="./js/recipe.js"></script>
+    <script src="./js/recipes.js"></script>
+    <script src="./js/ingredientStates.js"></script>
+    <script src="./js/ingredient.js"></script>
+    <script src="./js/levels.js"></script>
+    <script src="./js/order.js"></script>
+    <script src="./js/kitchenConfig.js"></script>
+    <script src="./js/kitchenExample.js"></script>
+    <script src="./js/cookingStation.js"></script>
+    <script src="./js/prepStation.js"></script>
+    <script src="./js/servingStation.js"></script>
+
+    <link href="styles/helper.css" rel="stylesheet">
+    <script src="app/index.js"></script>
+    <!-- JS -->
+    <script src="../../../scripts/buildfire.min.js"></script>
+    <!--
+   <script src="../../../../scripts/angular/angular.min.js"></script>
+   <script src="../../../../scripts/angular/ui-bootstrap.min.js"></script>
+
+   <script src="../../../../scripts/jquery/jquery-1.11.2.min.js"></script>
+   -->
 </head>
 <body>
 
-  <div class="container">
+<div ng-app="gameApp" class="container-fluid">
+    <div ng-view></div>
+</div>
 
-
-    <h1>Orders</h1>
-    <div class="row">
-        <ul class="lane list-group list-group-horizontal">
-          <li class="plate list-group-item">Order 1</li>
-          <li class="plate list-group-item">Order 2</li>
-        </ul>
-    </div>
-    
-
-    <h1>Pantry</h1>
-    <div class="row">
-        <ul class="lane list-group list-group-horizontal" id="pantryLane">
-          <li class="plate list-group-item">4</li>
-          <li class="plate list-group-item">5</li>
-        </ul>
-    </div>
-    <hr />
-    <h1>Prep</h1>
-
-    <div class="row">
-      <ul id="prepLane" class="list-group list-group-horizontal">
-        <li class="plate list-group-item">1</li>
-        <li class="plate list-group-item">2</li>
-        <li class="plate list-group-item">3</li>
-      </ul>
-  
-    </div>
-    <h1>Cooking</h1>
-    <div class="row">
-      <ul id="cookingLane" class="list-group list-group-horizontal">
-        <li class="plate list-group-item">1</li>
-        <li class="plate list-group-item">2</li>
-        <li class="plate list-group-item">3</li>
-      </ul>
-  
-    </div>
-    <h1>Order</h1>
-    <div class="row">
-      <ul id="servingLane" class="list-group list-group-horizontal">
-        <li class="plate list-group-item">1</li>
-        <li class="plate list-group-item">2</li>
-        <li class="plate list-group-item">3</li>
-      </ul>
-  
-    </div>
-
-
-
-  </div>
-
-
-  <script>
-    // Simple list
-    new Sortable(pantryLane, {
-        group: 'shared', // set both lists to same group
-        animation: 150,
-        onAdd: function (/**Event*/evt) {
-            // same properties as onEnd
-            debugger;
-        },
-        // Element is removed from the list into another list
-        onRemove: function (/**Event*/evt) {
-            debugger;
-        },
-    });
-    new Sortable(prepLane, {
-        group: 'shared',
-        animation: 150,
-        onAdd: function (/**Event*/evt) {
-            // same properties as onEnd
-            debugger;
-        },
-        // Element is removed from the list into another list
-        onRemove: function (/**Event*/evt) {
-            debugger;
-        }
-    });
-    new Sortable(cookingLane, {
-        group: 'shared', // set both lists to same group
-        animation: 150,
-        onAdd: function (/**Event*/evt) {
-            // same properties as onEnd
-            debugger;
-        },
-        // Element is removed from the list into another list
-        onRemove: function (/**Event*/evt) {
-            debugger;
-        },
-    });
-    new Sortable(servingLane, {
-        group: 'shared', // set both lists to same group
-        animation: 150,
-        onAdd: function (/**Event*/evt) {
-            // same properties as onEnd
-            debugger;
-        },
-        // Element is removed from the list into another list
-        onRemove: function (/**Event*/evt) {
-            debugger;
-        },
-    });
-
-
-</script>
-
-
-  <script>
-    let newPrepStation = new prepStation();
-    newPrepStation.add(kitchenExample.kitchenConfig.pantry[0]);
-    console.log(newPrepStation);
-
-    let x = document.getElementById("prepLane");
-    x.setAttribute("data-item",JSON.stringify(newPrepStation.ingredient));
-    console.log(x.getAttribute("data-item"));
-
-  </script>
 </body>
 </html>
