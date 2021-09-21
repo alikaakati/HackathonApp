@@ -23,6 +23,7 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "@intervolga/optimize-cssnano-plugin": "^1.0.6",
+    "@types/sortablejs": "^1.10.7",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^1.0.0",
@@ -34,10 +35,10 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.12.3",
-    "mini-css-extract-plugin": "^0.5.0",
     "html-webpack-plugin": "^3.2.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
+    "mini-css-extract-plugin": "^0.5.0",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "webpack": "^4.28.3",
@@ -49,6 +50,8 @@
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-dropzone": "^11.4.0",
-    "react-hot-loader": "^4.6.5"
+    "react-hot-loader": "^4.6.5",
+    "react-sortablejs": "^6.0.0",
+    "sortablejs": "^1.14.0"
   }
 }

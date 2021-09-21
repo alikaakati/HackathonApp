@@ -1,42 +1,31 @@
-import React, { useEffect } from 'react'
-import { hot } from 'react-hot-loader/root';
-import './style.css';
-const Order = ({price, time, name , ingredients , image , requiresAllCooked}) => {
+import React, {  useEffect, useState } from "react";
+import { hot } from "react-hot-loader/root";
+import { ReactSortable } from "react-sortablejs";
 
-    useEffect(() => {
-        let timer = setInterval(() => {
-          time--;
-          document.getElementById("order0").innerHTML = time;
-          if(time == 0){ 
-              document.getElementById("order-parent-0").style.display = "none";
-              // updateScore(-1*price)
-              clearInterval(timer);
-            
-            }
-        }, 1000);
+const Order = (props) => {
+  const [state, setState] = useState([
+    { id: 3, name: "Order shrek" },
+    { id: 4, name: "Order fiona" },
+  ]);
 
-    }, [])
-    //rawImage
-    console.log("From order");
-    console.log(ingredients);
-    return (
-        <div id="order-parent-0">
-        <div id="station-container" className="station-container">
-            <div className="station-food-order">
-                <img src={image} />
-            </div>
-            <div className="station-ingredients-order">
-                {ingredients.map(v => {
-                    return(
-                        <div id="order0" className="station-ingredient-order">                
-                            <img src={v.rawImage}/>
-                        </div>
-                    )
-                })}
-            </div>
-        </div>
-        </div>
-    )
-}
+  useEffect(() => {
+    console.log(state);
+    }, [state])
+
+
+  return (
+    <ReactSortable 
+    onAdd={() => console.log("Added item to this list Order")}
+    list={state} 
+    setList={setState}       
+    group="groupName"
+    animation={200}
+    >
+      {state.map((item) => (
+        <div key={item.id}>{item.name}</div>
+      ))}
+    </ReactSortable>
+  );
+};
 
 export default hot(Order)

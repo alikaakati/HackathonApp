@@ -9,13 +9,17 @@ export class prepStation{
 
     
     prep = () =>{
+        console.log(this.ingredient);
+        debugger;
         this.ingredient.startPrep();
     }
 
     add = (ingredient) =>{
         //random unique id
-        if(!ingredient.id) ingredient.id = Date.now();
-        this.ingredient = ingredient;
+        if(ingredient){
+            if(!ingredient.id) ingredient.id = Date.now();
+            this.ingredient = ingredient;
+        }
     }
 
 

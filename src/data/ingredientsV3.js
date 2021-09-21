@@ -36,7 +36,7 @@ export class Ingredient{
         }
 
         this.prepClicked++;
-        
+        debugger;
         if(this.prepClicks === this.prepClicked){
             console.log("PREPARED, STATE UPDATED");
             this.state = IngredientStates.PREPARED;

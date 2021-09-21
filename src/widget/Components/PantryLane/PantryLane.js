@@ -22,7 +22,7 @@ const PantryLane = ({title , pantry}) => {
                 {title}
             </h1>
         </div>
-        <div className="pantry-lane-container">
+        <div style={{flexDirection:"row"}}>
             <Pantry rawImage={newPrepStation.ingredient.state == "PREPARED" ? newPrepStation.ingredient.prepImage : newPrepStation.ingredient.rawImage} name={pantryElements.name} event={_handleClickButton} clicks = {newPrepStation.ingredient.prepClicked}  />
         </div>
     </div>
